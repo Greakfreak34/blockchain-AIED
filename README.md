@@ -1,6 +1,9 @@
 <<<<<<< HEAD
+
 # blockchain-AIED
+
 =======
+
 # Free React / Next.js landing page template
 
 ![Open React / Next.js template preview](https://github.com/user-attachments/assets/522a5e46-2a0e-48ca-80eb-87c7fa58f3ea)
@@ -92,4 +95,5 @@ We're an Italian developer/designer duo creating high-quality design/code resour
 ## Stay in the loop
 
 If you would like to know when we release new resources, you can follow us on [Twitter](https://twitter.com/Cruip_com), or you can subscribe to our monthly [newsletter](https://cruip.com/#subscribe).
->>>>>>> c4bd1db (initial commit)
+
+> > > > > > > c4bd1db (initial commit)
