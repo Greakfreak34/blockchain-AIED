@@ -58,7 +58,8 @@ export default function HeroHome() {
           {/* Header */}
           <div className="pb-12 text-center md:pb-20">
             <h1 className="text-4xl font-semibold">
-              Blockchain-Powered Credential Solutions for Secure Verification
+              Blockchain and AI Powered Credential Solutions for Secure
+              Verification
             </h1>
             <div className="mx-auto max-w-3xl">
               <p className="mb-8 text-xl">
