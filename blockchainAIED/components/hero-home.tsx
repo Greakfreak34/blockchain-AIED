@@ -18,6 +18,17 @@ export default function HeroHome() {
       await handleFileUpload(file);
     }
   };
+  const handleFileSelect1 = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    if (event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      setSelectedFile(file);
+
+      // Automatically start the upload process after the file is selected
+      await handleVerifyCredentials(file);
+    }
+  };
 
   // Handle the actual file upload process
   const handleFileUpload = async (file: File) => {
@@ -33,7 +44,11 @@ export default function HeroHome() {
       });
 
       if (response.ok) {
-        alert("File uploaded successfully");
+        response.json().then(jsonResponse => {
+    alert(`File uploaded successfully. ${JSON.stringify(jsonResponse, null, 2)}`);
+});
+
+
         setSelectedFile(null); // Clear the selected file after successful upload
       } else {
         alert("File upload failed");
@@ -47,8 +62,35 @@ export default function HeroHome() {
   };
 
   // Placeholder function for verifying credentials
-  const handleVerifyCredentials = () => {
-    alert("Verify Credentials functionality goes here.");
+  const handleVerifyCredentials =  async (file: File) => {
+
+    setUploading(true); // Set uploading state to true
+
+    const formData = new FormData();
+    formData.append("file", file);
+
+    try {
+      const response = await fetch("http://localhost:5000/upload1", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (response.ok) {
+        response.json().then(jsonResponse => {
+    alert(`File uploaded successfully. ${JSON.stringify(jsonResponse, null, 2)}`);
+});
+
+
+        setSelectedFile(null); // Clear the selected file after successful upload
+      } else {
+        alert("File upload failed");
+      }
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      alert("An error occurred while uploading the file.");
+    } finally {
+      setUploading(false); // Reset uploading state
+    }
   };
 
   return (
@@ -91,9 +133,18 @@ export default function HeroHome() {
 
                 <div className="flex flex-col sm:ml-4">
                   {/* Verify Credentials Button */}
+                  <input
+                      type="file"
+                      onChange={handleFileSelect1}
+                      style={{display: "none"}}
+                      id="file-upload1"
+                  />
                   <button
-                    className="btn mb-4 w-full bg-gray-800 text-white"
-                    onClick={handleVerifyCredentials}
+                      className="btn mb-4 w-full bg-gray-800 text-white"
+                      onClick={() =>
+                      document.getElementById("file-upload1")?.click()
+                    }
+                    disabled={uploading}
                   >
                     Verify Credentials
                   </button>
@@ -102,7 +153,7 @@ export default function HeroHome() {
 
               {/* Display selected file name (optional) */}
               {selectedFile && !uploading && (
-                <p className="text-center text-gray-500 mt-4">
+                  <p className="text-center text-gray-500 mt-4">
                   Selected File: {selectedFile.name}
                 </p>
               )}

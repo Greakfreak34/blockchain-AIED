@@ -34,7 +34,7 @@ def process_document(project_id, location, processor_id, file_path, mime_type):
     document = result.document
 
     # Extract text from the document
-    extract_text(document)
+    return extract_text(document)
 
 def extract_text(document):
     """
@@ -49,6 +49,7 @@ def extract_text(document):
         page_text = get_text(page.layout, document)
         print(f"\nPage {page_index + 1} Text:")
         print(page_text)
+        return page_text
 
 def get_text(layout, document):
     """
@@ -63,12 +64,12 @@ def get_text(layout, document):
             response_text += document.text[int(start_index):int(end_index)]
     return response_text
 
-if __name__ == "__main__":
-    # Replace with your own values
-    project_id = "transcript-437102"
-    location = "us"  # Format: 'us' or 'eu'
-    processor_id = "bae52143dac929cc"
-    file_path = "image.jpg"  # Can be PDF or image file
-    mime_type = "image/jpeg"  # e.g., 'application/pdf', 'image/jpeg'
-
-    process_document(project_id, location, processor_id, file_path, mime_type)
+    #
+    # # Replace with your own values
+    # project_id = "transcript-437102"
+    # location = "us"  # Format: 'us' or 'eu'
+    # processor_id = "bae52143dac929cc"
+    # file_path = "image.jpg"  # Can be PDF or image file
+    # mime_type = "image/jpeg"  # e.g., 'application/pdf', 'image/jpeg'
+    #
+    # process_document(project_id, location, processor_id, file_path, mime_type)

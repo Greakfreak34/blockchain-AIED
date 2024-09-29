@@ -16,8 +16,8 @@ contracts_dir = os.path.join(parent_dir, 'contracts')
 os.makedirs(build_dir, exist_ok=True)
 
 # Define the path to the AcademicCredentials.json file in the 'build' directory
-Credentials_file_path = os.path.join(build_dir, 'AcademicCredentials.json')
-contracts_file_path=os.path.join(contracts_dir,'AcademicCredentials.sol')
+Credentials_file_path = os.path.join('build', 'AcademicCredentials.json')
+contracts_file_path=os.path.join('contracts','AcademicCredentials.sol')
 
 def verify_credential(credential_hash_hex, contract_address):
     # Connect to local Ethereum node
