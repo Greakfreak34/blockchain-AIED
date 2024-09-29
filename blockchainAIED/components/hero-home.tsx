@@ -58,12 +58,13 @@ export default function HeroHome() {
           {/* Header */}
           <div className="pb-12 text-center md:pb-20">
             <h1 className="text-4xl font-semibold">
-              AI-driven tools for product teams
+              Blockchain-Powered Credential Solutions for Secure Verification
             </h1>
             <div className="mx-auto max-w-3xl">
               <p className="mb-8 text-xl">
-                Our landing page template works on all devices, so you only have
-                to set it up once.
+                Our platform enables institutions and employers to securely
+                verify academic and professional credentials, ensuring
+                authenticity and reducing fraud.
               </p>
 
               {/* Buttons Section */}
